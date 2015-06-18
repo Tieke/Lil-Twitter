@@ -1,6 +1,13 @@
+<h1> <%= @user.name %> </h1>
+
 <form action="/user/<%= @user.id %>/post" method="post">
   <input type="text" name="content" placeholder="Tell me what do you feel here">
   <input type="submit" value="POST">
 </form>
 
+<h2>Your tweets</h2>
 
+<% @posts.each do | post | %>
+  <p><%= post.content %></p>
+  <p>Created at: <%= post.created_at %><Created at: /p>
+<% end %>
