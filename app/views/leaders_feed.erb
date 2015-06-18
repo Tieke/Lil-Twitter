@@ -1,0 +1,21 @@
+    <h2> Leaders Posts</h2>
+<% posts = [] %>
+<% @leaders.each do | leader | %>
+  <% posts = leader.posts %>
+  <% posts.each do |post|%>
+    <% posts << post %>
+  <% end %>
+<% end %>
+
+<% posts.order(created_at: :desc) %>
+
+<% posts.each do |post|%>
+  <p><%= post.user.name %></p>
+  <p><%= post.content %></p>
+  <p>Created at: <%= post.created_at %></p>
+<% end %>
+
+</div>
+
+
+
