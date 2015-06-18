@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
     user_relationships = UserRelationships.where(follower_id: follower_id)
     leaders_for_user = user_relationships.map do |relationship|
       User.find(realationship.leader_id)
+    end
   end
 
    def self.authenticate_email(email, password)
