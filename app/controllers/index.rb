@@ -2,6 +2,7 @@ get '/' do
   if session[:user_id]
     @post = Post.order(created_at: :desc)
     @user = session[:user_id]
+    @users = User.all
     erb :index
   else
     redirect '/login'
@@ -44,3 +45,4 @@ post '/follow/:id' do
   follower.follow_user!(leader)
   redirect '/'
 end
+

@@ -33,3 +33,19 @@ h1, h2, h3 {
 th {
   text-align: left;
 }
+
+.post {
+  background-color: #FFFFFF;
+}
+
+.image {
+  float: left;
+}
+
+.follow_and_user_button {
+  float: right;
+}
+.user_name {
+
+}
+
