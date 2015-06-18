@@ -20,3 +20,9 @@ post '/logout' do
   session.clear
   redirect '/'
 end
+
+post '/signup' do
+  user = User.create(name:params[:name], email:params[:email], password:params[:password], image:params[:image], description:params[:description])
+  session[:user_id] = user.id
+  redirect '/'
+end
