@@ -1,7 +1,9 @@
 class CreatePosts < ActiveRecord::Migration
   def change
-    t.belongs_to :user
-    t.string :content
-    t.timestamps null: false
+    create_table :posts do |t|
+      t.belongs_to :user
+      t.string :content
+      t.timestamps null: false
+    end
   end
 end
