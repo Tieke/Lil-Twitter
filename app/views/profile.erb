@@ -3,6 +3,9 @@
   <input type ="submit" value="News Feed Page" class="pure-button pure-button-primary">
 </form>
 <br>
+<form action = "/user/<%= @user %>/feed" method="get">
+  <input type ="submit" value="Friend feed" class="pure-button pure-button-primary">
+</form>
 <br>
 <form action = "/logout" method="post">
   <input type ="submit" value="Log Out" class="pure-button pure-button-primary">

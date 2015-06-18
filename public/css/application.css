@@ -35,17 +35,23 @@ th {
 }
 
 .post {
-  background-color: #FFFFFF;
+  border-radius: 10px;
+  background-color: #FFFFF0;
+  border: 1px  solid #3366FF;
 }
 
 .image {
+  border-radius: 10px;
   float: left;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 .follow_and_user_button {
   float: right;
+  padding-top: 10px;
 }
-.user_name {
-
+.post_content {
+  padding-left: 10px;
 }
 
