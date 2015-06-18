@@ -29,4 +29,12 @@ post '/signup' do
   redirect '/'
 end
 
+get '/user/:id/feed' do
+  @user = User.find(params[:id])
+  @leaders = @user.leaders
+  # p @leaders
 
+  erb :leaders_feed
+  # redirect "/user/#{user_id}/profile" # temporary
+  #redirect to friends feed
+end

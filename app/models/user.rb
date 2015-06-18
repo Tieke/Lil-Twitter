@@ -12,17 +12,17 @@ class User < ActiveRecord::Base
 
   def followers #to find followers for a user
     leader_id = self.id
-    user_relationships = UserRelationships.where(leader_id: leader_id)
+    user_relationships = UserRelationship.where(leader_id: leader_id)
     followers_for_user = user_relationships.map do |relationship|
-      User.find(realationship.follower_id)
+      User.find(relationship.follower_id)
     end
   end
 
   def leaders #to find the leaders for a user
     follower_id = self.id
-    user_relationships = UserRelationships.where(follower_id: follower_id)
+    user_relationships = UserRelationship.where(follower_id: follower_id)
     leaders_for_user = user_relationships.map do |relationship|
-      User.find(realationship.leader_id)
+      User.find(relationship.leader_id)
     end
   end
 
