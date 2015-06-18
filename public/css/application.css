@@ -33,3 +33,15 @@ h1, h2, h3 {
 th {
   text-align: left;
 }
+
+.post {
+  background-color: #FFFFFF;
+}
+
+.image {
+  float: left;
+}
+
+.user_name {
+
+}

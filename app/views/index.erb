@@ -14,8 +14,19 @@
 
 
     <h2> Everyone's Posts</h2>
-<% @post.each do |post|%>
-  <p><%= post.content %></p>
-  <p>Created at: <%= post.created_at %></p>
-<% end %>
+<div class="post">
+  <% @post.each do |post|%>
+      <% @users.each do |user|%>
+      <div class="image">
+        <a href = "/user/<%= user.id %>/profile"> <img src="<%= user.image %>" height="40px" width="40px"/></a>
+      </div>
+      <div class="user_name">
+        <p><%= user.name %></p>
+      </div>
+        <p><%= post.content %></p>
+        <p>Created at: <%= post.created_at %></p>
+      <% end %>
+  <% end %>
+</div>
+
 </div>
