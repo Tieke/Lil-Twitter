@@ -33,9 +33,16 @@ end
 get '/user/:id/feed' do
   @user = User.find(params[:id])
   @leaders = @user.leaders
-  # p @leaders
-
   erb :leaders_feed
-  # redirect "/user/#{user_id}/profile" # temporary
-  #redirect to friends feed
 end
+
+post '/follow/:id' do
+  follower_id = session[:user_id]
+  follower = User.find(follower_id)
+  # return params.inspect
+  leader_id = params[:id]
+  leader = User.find(leader_id)
+  follower.follow_user!(leader)
+  redirect '/'
+end
+

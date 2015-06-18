@@ -42,6 +42,10 @@ th {
   float: left;
 }
 
+.follow_and_user_button {
+  float: right;
+}
 .user_name {
 
 }
+
