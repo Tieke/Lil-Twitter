@@ -1,8 +1,6 @@
 get '/user/:id/profile' do
   @user = User.find(params[:id])
-  @posts = @user.posts.all
-  #this should just display own posts
-  # @followers = @user.followers
+  @posts = @user.posts.order(created_at: :desc)
   erb :profile
 end
 
