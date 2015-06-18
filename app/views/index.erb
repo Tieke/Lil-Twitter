@@ -1,5 +1,20 @@
-<h1>Hi</h1>
-
-<form action = "/logout" method="post">
-  <input type ="submit" value="LOG OUT">
+<div class='button'>
+<form action = "/user/#{@user.id}/post" method="post">
+  <input type ="submit" value="Profile Page" class="pure-button pure-button-primary">
 </form>
+<br>
+<br>
+<form action = "/logout" method="post">
+  <input type ="submit" value="Log Out" class="pure-button pure-button-primary">
+</form>
+</div>
+
+<div class='container'>
+<h1>News Feed</h1>
+
+
+    <h2> Everyone's Posts</h2>
+<% @post.each do |post|%>
+  <p><%= post.content %></p>
+<% end %>
+</div>

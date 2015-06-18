@@ -1,5 +1,6 @@
 get '/' do
   if session[:user_id]
+    @post = Post.order(created_at: :desc)
     erb :index
   else
     redirect '/login'
@@ -26,3 +27,5 @@ post '/signup' do
   session[:user_id] = user.id
   redirect '/'
 end
+
+
