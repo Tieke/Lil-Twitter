@@ -1,6 +1,7 @@
 get '/' do
   if session[:user_id]
     @post = Post.order(created_at: :desc)
+    @user = session[:user_id]
     erb :index
   else
     redirect '/login'
