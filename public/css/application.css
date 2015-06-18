@@ -1,0 +1,35 @@
+body {
+  background-color: #daf6ff;
+}
+
+h1, h2, h3 {
+  color: #33ccff;
+  padding: 10px 0 20px;
+  border-bottom: 1px solid #3366FF;
+}
+
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+  background-color: #ecfaff;
+}
+
+.button {
+  background-color: #c6e4fa;
+  border: 1px solid #336fd1;
+}
+
+.field {
+  background-color: #F0F6F0;
+  border: 1px solid #ABDDBE;
+}
+
+.error {
+  color: red;
+}
+
+th {
+  text-align: left;
+}
