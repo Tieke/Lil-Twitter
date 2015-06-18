@@ -1,3 +1,21 @@
+<div class='button'>
+  <form action = "/user/<%= @user %>/profile" method="get">
+  <input type ="submit" value="Profile Page" class="pure-button pure-button-primary">
+</form>
+<br>
+<br>
+<form action = "/" method="get">
+  <input type ="submit" value="News Feed Page" class="pure-button pure-button-primary">
+</form>
+<br>
+<br>
+<form action = "/logout" method="post">
+  <input type ="submit" value="Log Out" class="pure-button pure-button-primary">
+</form>
+</div>
+
+
+<div class='container'>
     <h2> Leaders Posts</h2>
 <% posts = [] %>
 <% @leaders.each do | leader | %>
