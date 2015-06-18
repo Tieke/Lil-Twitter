@@ -5,9 +5,9 @@
 
 post '/user/:id/post' do
   # return params.inspect
-  user = User.find(params[:id])
-  post = user.posts.create(content: params[:content])
-  redirect "/user/#{user.id}/profile"
+  @user = User.find(params[:id])
+  post = @user.posts.create(content: params[:content])
+  redirect "/user/'#{@user.id}'/profile"
 end
 
 # post '/user/1/post' do
