@@ -10,3 +10,10 @@ post '/unfollow/:id' do
   follower.unfollow_user(leader)
   redirect '/'
 end
+
+post '/unfollow/leaders/:id' do
+  follower = User.find(session[:user_id])
+  leader = User.find(params[:id])
+  follower.unfollow_user(leader)
+  redirect "/user/#{session[:user_id]}/feed"
+end
