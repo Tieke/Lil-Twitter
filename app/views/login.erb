@@ -3,7 +3,6 @@
 
 <form class="pure-form pure-form-aligned" action="/login" method="post">
     <fieldset>
-
         <div class="pure-control-group">
             <label for="email">Email Address</label>
             <input id="email" type="email" name='email' placeholder="Email Address">
@@ -26,6 +25,9 @@
 </form>
 
 <br>
+<div class="error">
+<%= session[:error] if session[:error] %>
+</div>
 <br>
 <br>
 
@@ -62,7 +64,7 @@
                 <input id="cb" type="checkbox"> I've read the terms and conditions
             </label>
 
-            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            <button type="submit" class="pure-button pure-button-primary">Sign Up</button>
         </div>
     </fieldset>
 </form>

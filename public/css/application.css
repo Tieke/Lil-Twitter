@@ -50,6 +50,7 @@ th {
 .follow_and_user_button {
   float: right;
   padding-top: 10px;
+  padding-right: 10px;
 }
 .post_content {
   padding-left: 10px;
@@ -63,3 +64,7 @@ th {
   border-radius: 5px;
 }
 
+.error {
+  text-align: center;
+  color: red;
+}
