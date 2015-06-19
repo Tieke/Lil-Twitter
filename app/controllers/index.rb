@@ -1,5 +1,6 @@
 get '/' do
   if session[:user_id]
+    session[:error] = nil
     @posts = Post.order(created_at: :desc)
     @user = User.find(session[:user_id])
     @users = User.all
@@ -10,13 +11,20 @@ get '/' do
 end
 
 get '/login' do
+  # session[:error] = nil
   erb :login
 end
 
 post '/login' do
-  user = User.authenticate_email(params[:email], params[:password])
-  session[:user_id] = user.id
-  redirect '/'
+  if User.authenticate_email(params[:email], params[:password])
+    user = User.authenticate_email(params[:email], params[:password])
+    session[:user_id] = user.id
+    session[:error] = nil
+    redirect '/'
+  else
+    session[:error] = "Wrong username or password!"
+    redirect '/login'
+  end
 end
 
 post '/logout' do
@@ -26,8 +34,15 @@ end
 
 post '/signup' do
   user = User.create(name:params[:name], email:params[:email], password:params[:password], image:params[:image], description:params[:description])
-  session[:user_id] = user.id
-  redirect '/'
+  if user.valid?
+    session[:user_id] = user.id
+    session[:error] = nil
+    user.save
+    redirect '/'
+  else
+    session[:error] = "Please fill in all information in sign up!"
+    redirect '/login'
+  end
 end
 
 get '/user/:id/feed' do
