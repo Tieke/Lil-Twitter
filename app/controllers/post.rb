@@ -10,6 +10,12 @@ post '/user/:id/post' do
   redirect "/user/#{@user.id}/profile"
 end
 
+post '/user/:id/post_newfeed' do
+  @user = User.find(params[:id])
+  post = @user.posts.create(content: params[:content])
+  redirect "/"
+end
+
 # post '/user/1/post' do
 #   "Hello World"
 # end

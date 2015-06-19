@@ -55,3 +55,11 @@ th {
   padding-left: 10px;
 }
 
+.pure-button {
+  border-radius: 5px;
+}
+
+.pure-button-primary {
+  border-radius: 5px;
+}
+

@@ -3,34 +3,58 @@
   <input type ="submit" value="News Feed Page" class="pure-button pure-button-primary">
 </form>
 <br>
-<form action = "/user/<%= @user %>/feed" method="get">
-  <input type ="submit" value="Friend feed" class="pure-button pure-button-primary">
-</form>
+
+<% if User.find(session[:user_id]).leaders.length > 0 %>
+  <form action = "/user/<%= @user.id %>/feed" method="get">
+    <input type ="submit" value="Friend feed" class="pure-button pure-button-primary">
+  </form>
+<% end %>
 <br>
 <form action = "/logout" method="post">
   <input type ="submit" value="Log Out" class="pure-button pure-button-primary">
 </form>
+<% if !user_can_edit? %>
+  <form action = "/user/<%= session[:user_id] %>/profile" method="get">
+  <input type ="submit" value="Profile Page" class="pure-button pure-button-primary">
+  </form>
+<%end%>
 </div>
 
 
 <div class='container'>
 <h1> <%= @user.name %> </h1>
-
+<% if user_can_edit? %>
 <form class="pure-form pure-form-aligned" action="/user/<%= @user.id %>/post" method="post">
      <div class="pure-control-group">
       <label for="content"></label>
-  <input type="text" name="content" placeholder="Tell me what do you feel here">
-  </label>
-  <button type="submit" class="pure-button pure-button-primary">Post</button>
+      <input type="text" name="content" placeholder="Tell me what do you feel here">
+      </label>
+      <button type="submit" class="pure-button pure-button-primary">Post</button>
     </div>
 </form>
+<% end %>
 
-<h2>Your tweets</h2>
+<% if User.find(session[:user_id]) == @user %>
+  <h2>Your tweets</h2>
+<%else%>
+  <h2>Tweets</h2>
+<%end%>
 
 <% @posts.each do | post | %>
-  <a href = "/user/<%= @user.id %>/profile"> <img src="<%= @user.image %>" height="40px" width="40px"/></a>
+  <div class="post">
+    <div class="image">
+      <a href = "/user/<%= @user.id %>/profile"> <img src="<%= @user.image %>" height="40px" width="40px"/></a>
+    </div>
+    <div class="user_name">
+          <p><%= @user.name %></p>
+        </div>
+        <br>
+    <div class="post_content">
+      <p><%= post.content %></p>
+      <p>Created at: <%= post.created_at.getlocal %></p>
+    </div>
+  </div>
 
-  <p><%= post.content %></p>
-  <p>Created at: <%= post.created_at %></p>
+  <br>
 <% end %>
 </div>

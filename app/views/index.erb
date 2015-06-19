@@ -1,11 +1,14 @@
 <div class='button'>
-<form action = "/user/<%= @user %>/profile" method="get">
+<form action = "/user/<%= @user.id %>/profile" method="get">
   <input type ="submit" value="Profile Page" class="pure-button pure-button-primary">
 </form>
 <br>
-<form action = "/user/<%= @user %>/feed" method="get">
-  <input type ="submit" value="Friend feed" class="pure-button pure-button-primary">
-</form>
+<% if @user.leaders.length > 0 %>
+  <form action = "/user/<%= @user.id %>/feed" method="get">
+    <input type ="submit" value="Friend feed" class="pure-button pure-button-primary">
+  </form>
+<% end %>
+
 <br>
 <form action = "/logout" method="post">
   <input type ="submit" value="Log Out" class="pure-button pure-button-primary">
@@ -14,7 +17,14 @@
 
 <div class='container'>
 <h1>News Feed</h1>
-
+  <form class="pure-form pure-form-aligned" action="/user/<%= @user.id %>/post_newfeed" method="post">
+     <div class="pure-control-group">
+      <label for="content"></label>
+      <input type="text" name="content" placeholder="Tell me what do you feel here">
+      </label>
+      <button type="submit" class="pure-button pure-button-primary">Post</button>
+    </div>
+  </form>
 
     <h2> Everyone's Posts</h2>
   <% @post.each do |post|%>
@@ -23,14 +33,13 @@
         <div class="image">
           <a href = "/user/<%= user.id %>/profile"> <img src="<%= user.image %>" height="40px" width="40px"/></a>
         </div>
-        <div class="follow_and_user_button"
-          <form action = "/user/<%= user.id %>/profile" method="get">
-          <input type ="submit" value="User: <%= User.find(user.id).name %>" class="pure-button pure-button-primary">
+        <div class="follow_and_user_button">
           <br>
-          </form>
-          <form action = "/follow/<%= user.id %>" method="post">
-            <input type ="submit" value="Follow" class="pure-button pure-button-primary">
-          </form>
+          <% if !User.find(session[:user_id]) %>
+            <form action = "/follow/<%= user.id %>" method="post">
+              <input type ="submit" value="Follow" class="pure-button pure-button-primary">
+            </form>
+          <%end%>
         </div>
         <div class="user_name">
           <p><%= user.name %></p>
@@ -38,7 +47,7 @@
         <br>
         <div class="post_content">
           <p><%= post.content %></p>
-          <p>Created at: <%= post.created_at %></p>
+          <p>Created at: <%= post.created_at.getlocal %></p>
         </div>
       </div>
       <br>

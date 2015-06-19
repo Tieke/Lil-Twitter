@@ -4,4 +4,3 @@ get '/user/:id/profile' do
   erb :profile
 end
 
-
