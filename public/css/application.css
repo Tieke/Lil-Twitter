@@ -55,3 +55,8 @@ th {
   padding-left: 10px;
 }
 
+#rashad {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
