@@ -10,6 +10,13 @@ class User < ActiveRecord::Base
     UserRelationship.create(leader_id: leader_id, follower_id: follower_id)
   end
 
+  def unfollow_user(user_to_unfollow)
+    follower_id = self.id
+    leader_id = user_to_unfollow.id
+    user_relationships = UserRelationship.where(leader_id: leader_id, follower_id: follower_id)
+    user_relationships.destroy_all
+  end
+
   def followers #to find followers for a user
     leader_id = self.id
     user_relationships = UserRelationship.where(leader_id: leader_id)
