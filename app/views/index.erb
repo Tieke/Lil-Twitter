@@ -27,22 +27,22 @@
   </form>
 
     <h2> Everyone's Posts</h2>
-  <% @post.each do |post|%>
-    <% @users.each do |user|%>
+  <% @posts.each do |post|%>
+
       <div class="post">
         <div class="image">
-          <a href = "/user/<%= user.id %>/profile"> <img src="<%= user.image %>" height="40px" width="40px"/></a>
+          <a href = "/user/<%= post.user.id %>/profile"> <img src="<%= post.user.image %>" height="40px" width="40px"/></a>
         </div>
         <div class="follow_and_user_button">
           <br>
-          <% if !User.find(session[:user_id]) %>
-            <form action = "/follow/<%= user.id %>" method="post">
+          <% if post.user != User.find(session[:user_id]) && !User.find(session[:user_id]).leaders.include?(post.user) %>
+            <form action = "/follow/<%= post.user.id %>" method="post">
               <input type ="submit" value="Follow" class="pure-button pure-button-primary">
             </form>
           <%end%>
         </div>
         <div class="user_name">
-          <p><%= user.name %></p>
+          <p><%= post.user.name %></p>
         </div>
         <br>
         <div class="post_content">
@@ -51,6 +51,7 @@
         </div>
       </div>
       <br>
-    <% end %>
+
   <% end %>
 </div>
+

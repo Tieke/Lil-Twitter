@@ -1,6 +1,6 @@
 get '/' do
   if session[:user_id]
-    @post = Post.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc)
     @user = User.find(session[:user_id])
     @users = User.all
     erb :index
