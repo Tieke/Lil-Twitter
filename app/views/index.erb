@@ -35,11 +35,23 @@
         </div>
         <div class="follow_and_user_button">
           <br>
+
+
           <% if post.user != User.find(session[:user_id]) && !User.find(session[:user_id]).leaders.include?(post.user) %>
             <form action = "/follow/<%= post.user.id %>" method="post">
               <input type ="submit" value="Follow" class="pure-button pure-button-primary">
             </form>
           <%end%>
+
+          <% if post.user != User.find(session[:user_id]) && User.find(session[:user_id]).leaders.include?(post.user) %>
+            <form action = "/unfollow/<%= post.user.id %>" method="post">
+              <input type ="submit" value="UnFollow" class="pure-button pure-button-primary">
+            </form>
+          <%end%>
+
+
+
+
         </div>
         <div class="user_name">
           <p><%= post.user.name %></p>

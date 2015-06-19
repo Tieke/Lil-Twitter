@@ -4,3 +4,9 @@ get '/user/:id/profile' do
   erb :profile
 end
 
+post '/unfollow/:id' do
+  follower = User.find(session[:user_id])
+  leader = User.find(params[:id])
+  follower.unfollow_user(leader)
+  redirect '/'
+end
